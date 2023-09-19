@@ -17,7 +17,7 @@ class UserRepository implements UserRepositoryInterface
 
     public function __construct(DBALRepositoryFactory $DBALRepositoryFactory)
     {
-        $this->repository = $DBALRepositoryFactory->create('user', User::class);
+        $this->repository = $DBALRepositoryFactory->create('rm_user', User::class);
     }
 
     public function save(UserInterface $user): void
@@ -26,5 +26,10 @@ class UserRepository implements UserRepositoryInterface
 
         /** @var User $user */
         $this->repository->save($user);
+    }
+
+    public function getInstance(): Repository
+    {
+        return $this->repository;
     }
 }

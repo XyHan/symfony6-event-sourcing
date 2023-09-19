@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Security\Projector;
 
-use App\Security\Domain\Model\User\User as ReadModel;
 use Broadway\ReadModel\Projector;
 use Security\Domain\Event\UserHasBeenCreated;
+use Security\Domain\Model\User\User as ReadModel;
 use Security\Domain\Model\User\UserInterface;
 use Security\Domain\Service\PasswordHasher;
 use Security\Domain\Service\Validator;
@@ -25,8 +25,8 @@ class DoctrineUserProjector extends Projector
 
     protected function applyUserHasBeenCreated(UserHasBeenCreated $event): void
     {
-        $this->doctrineUserRepository->create($this->getDoctrineUserFromEvent($event));
         $this->readModelRepository->save($this->getUserReadModelFromEvent($event));
+        $this->doctrineUserRepository->create($this->getDoctrineUserFromEvent($event));
     }
 
     private function getDoctrineUserFromEvent(UserHasBeenCreated $event): UserInterface

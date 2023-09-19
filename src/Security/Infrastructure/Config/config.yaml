@@ -6,7 +6,7 @@ services:
   Security\:
     resource: '%kernel.project_dir%/src/Security/*'
 
-  Security\Domain\Repository\UserRepository:
+  Security\Domain\Repository\UserBroadwayRepository:
     arguments:
       - '@broadway.event_store'
       - '@broadway.event_handling.event_bus'
@@ -15,7 +15,7 @@ services:
 
   Security\Application\Command\CreateAUser\CreateAUserCommandHandler:
     arguments:
-      - '@Security\Domain\Repository\UserRepository'
+      - '@Security\Domain\Repository\UserBroadwayRepository'
     tags:
       - { name: broadway.command_handler }
 

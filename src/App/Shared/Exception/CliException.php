@@ -16,6 +16,6 @@ class CliException extends Exception
 
     public static function FromCommandExecution(Throwable $previous): self
     {
-        return new self('An error has been thrown during command execution', $previous);
+        return new self(sprintf('An error has been thrown during command execution: %s', $previous->getMessage()), $previous);
     }
 }
