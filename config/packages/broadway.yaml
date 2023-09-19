@@ -1,0 +1,18 @@
+# see https://github.com/broadway/broadway-bundle
+
+broadway:
+
+    # a service definition id implementing Broadway\ReadModel\RepositoryFactory
+    read_model: broadway.read_model.in_memory.repository_factory
+
+    serializer:
+        payload:   broadway.simple_interface_serializer
+        readmodel: broadway.simple_interface_serializer
+        metadata:  broadway.simple_interface_serializer
+
+    command_handling:
+        dispatch_events: false
+        logger: null
+
+    saga:
+        enabled: false

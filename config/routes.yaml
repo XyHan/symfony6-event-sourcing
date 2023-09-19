@@ -1,5 +1,16 @@
-controllers:
+app_controllers:
     resource:
-        path: ../src/Controller/
-        namespace: App\Controller
+        path: ../src/App/Home/Http/Rest/
+        namespace: App\Home\Http\Rest
     type: attribute
+    prefix: /
+
+app_security_controllers:
+    resource:
+        path: ../src/App/Security/Http/Rest/
+        namespace: App\Security\Http\Rest
+    type: attribute
+    prefix: /api
+
+login_check:
+    path: /api/login_check
