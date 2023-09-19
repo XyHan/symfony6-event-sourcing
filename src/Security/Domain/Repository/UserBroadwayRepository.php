@@ -10,7 +10,7 @@ use Broadway\EventSourcing\EventSourcingRepository;
 use Broadway\EventStore\EventStore;
 use Security\Domain\AggregateRoot\User;
 
-class UserRepository extends EventSourcingRepository
+class UserBroadwayRepository extends EventSourcingRepository
 {
     public function __construct(
         EventStore $eventStore,

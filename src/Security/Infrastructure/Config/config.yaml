@@ -19,6 +19,8 @@ services:
     tags:
       - { name: broadway.command_handler }
 
-  Security\Ui\Projector\DoctrineUserProjector:
-    tags:
-      - { name: broadway.domain.event_listener }
+  Security\Infrastructure\Repository\DBAL\DBALRepositoryFactory:
+    public: true
+    arguments:
+      - '@doctrine.dbal.default_connection'
+      - '@broadway.serializer.readmodel'

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Security\Ui\ReadModel;
+namespace Security\Domain\Model\User;
 
 use Broadway\ReadModel\SerializableReadModel;
 use Security\Domain\Identifier\UserIdentifier;
@@ -10,7 +10,7 @@ use Security\Domain\Model\Email;
 use Security\Domain\Model\Name;
 use Security\Domain\Model\Role\Roles;
 
-readonly class User implements SerializableReadModel
+readonly class User implements UserInterface, SerializableReadModel
 {
     private function __construct(
         private UserIdentifier $userIdentifier,

@@ -25,6 +25,10 @@ services:
         resource: '%kernel.project_dir%/src/App/Security/Http/Rest/*'
         tags: [ 'controller.service_arguments' ]
 
+    App\Security\Projector\DoctrineUserProjector:
+        tags:
+            - { name: broadway.domain.event_listener }
+
     App\Shared\Adapter\CommandBus:
         arguments:
             - "@broadway.command_handling.command_bus"
