@@ -1,0 +1,42 @@
+version: '3.2'
+
+services:
+  db:
+    build: "./docker/mysql"
+    container_name: "s6es-mysql"
+    hostname: "s6es-mysql"
+    restart: "no"
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+    ports:
+      - "3336:3306"
+    volumes:
+      - "./var/mysql:/var/lib/mysql"
+    networks:
+      - "default"
+
+  php:
+    build: "docker/php"
+    container_name: "s6es-php"
+    hostname: "s6es-php"
+    working_dir: "/var/www"
+    restart: "always"
+
+    depends_on:
+      - "db"
+    ports:
+      - "8181:80"
+    volumes:
+      - "./docker/php/vhosts:/etc/apache2/sites-enabled"
+      - "${LOCAL_PATH}:/var/www"
+      - "~/.composer:/home/www-data/.composer"
+    networks:
+      - "default"
+
+networks:
+  default:
+    driver: "bridge"
+    ipam:
+      driver: "default"
+      config:
+        - subnet: "172.20.0.0/24"

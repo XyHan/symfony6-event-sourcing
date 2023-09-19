@@ -1,0 +1,26 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Security\:
+    resource: '%kernel.project_dir%/src/Security/*'
+
+  Security\Domain\Repository\UserBroadwayRepository:
+    arguments:
+      - '@broadway.event_store'
+      - '@broadway.event_handling.event_bus'
+      -
+        - '@broadway.metadata_enriching_event_stream_decorator'
+
+  Security\Application\Command\CreateAUser\CreateAUserCommandHandler:
+    arguments:
+      - '@Security\Domain\Repository\UserBroadwayRepository'
+    tags:
+      - { name: broadway.command_handler }
+
+  Security\Infrastructure\Repository\DBAL\DBALRepositoryFactory:
+    public: true
+    arguments:
+      - '@doctrine.dbal.default_connection'
+      - '@broadway.serializer.readmodel'
