@@ -17,7 +17,13 @@ class CreateAUserCommandHandler extends SimpleCommandHandler
 
     public function handleCreateAUserCommand(CreateAUserCommand $command): void
     {
-        $user = User::create(UserToCreate::fromCommand($command));
+        $user = User::create(new UserToCreate(
+            $command->getUuid(),
+            $command->getUsername(),
+            $command->getEmail(),
+            $command->getRoles(),
+            $command->getPassword()
+        ));
         $this->repository->save($user);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace Security\Domain\Dto;
 
-use Security\Application\Command\CreateAUser\CreateAUserCommand;
 use Security\Domain\Model\Email;
 use Security\Domain\Model\Name;
 use Security\Domain\Model\Password;
@@ -11,24 +10,13 @@ use Security\Domain\Model\Uuid;
 
 class UserToCreate
 {
-    private function __construct(
+    public function __construct(
         protected Uuid $uuid,
         protected Name $username,
         protected Email $email,
         protected Roles $roles,
         protected Password $password
     ) {
-    }
-
-    public static function fromCommand(CreateAUserCommand $command): self
-    {
-        return new self(
-            $command->getUuid(),
-            $command->getUsername(),
-            $command->getEmail(),
-            $command->getRoles(),
-            $command->getPassword()
-        );
     }
 
     public function getUuid(): Uuid

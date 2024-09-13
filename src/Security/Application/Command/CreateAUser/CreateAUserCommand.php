@@ -13,35 +13,35 @@ use Security\Domain\Model\Uuid;
 readonly class CreateAUserCommand
 {
     public function __construct(
-        private Uuid $uuid,
-        private Name $username,
-        private Email $email,
-        private Password $password,
-        private Roles $roles
+        private string $uuid,
+        private string $username,
+        private string $email,
+        private string $password,
+        private array $roles
     ) {}
 
     public function getUuid(): Uuid
     {
-        return $this->uuid;
+        return Uuid::fromString($this->uuid);
     }
 
     public function getUsername(): Name
     {
-        return $this->username;
+        return Name::fromString($this->username);
     }
 
     public function getEmail(): Email
     {
-        return $this->email;
+        return Email::fromString($this->email);
     }
 
     public function getPassword(): Password
     {
-        return $this->password;
+        return Password::fromString($this->password);
     }
 
     public function getRoles(): Roles
     {
-        return $this->roles;
+        return Roles::fromArray($this->roles);
     }
 }
