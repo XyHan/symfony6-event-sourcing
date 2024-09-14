@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Security\Domain\Model;
+namespace Security\Domain\ValueObject;
 
 use Webmozart\Assert\Assert;
 

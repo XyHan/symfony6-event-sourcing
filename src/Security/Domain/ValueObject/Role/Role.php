@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Security\Domain\Model\Role;
+namespace Security\Domain\ValueObject\Role;
 
 use Security\Domain\ValueObject\AllowedRoles;
 use Webmozart\Assert\Assert;

@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Security\Domain\Model\Role;
+namespace Security\Domain\ValueObject\Role;
+
+use Webmozart\Assert\Assert;
 
 class Roles
 {
@@ -13,6 +15,7 @@ class Roles
 
     private function __construct(array $roles)
     {
+        Assert::allIsInstanceOf($roles, Role::class);
         $this->roles = $roles;
     }
 
