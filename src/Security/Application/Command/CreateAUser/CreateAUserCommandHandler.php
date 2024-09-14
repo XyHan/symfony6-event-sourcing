@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Security\Application\Command\CreateAUser;
 
-use Security\Domain\Repository\EventStoreRepositoryInterface;
 use Broadway\CommandHandling\SimpleCommandHandler;
+use Security\Domain\Repository\EventStoreRepositoryInterface;
 use Security\Domain\AggregateRoot\User;
 use Security\Domain\Dto\UserToCreate;
 

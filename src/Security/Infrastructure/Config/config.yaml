@@ -8,12 +8,13 @@ services:
 
   Security\Application\Command\CreateAUser\CreateAUserCommandHandler:
     arguments:
-      $repository: '@Core\Repository\EventStoreRepository'
+      $repository: '@user_event_store_repository'
     tags:
       - { name: broadway.command_handler }
 
-  Security\Infrastructure\Repository\DBAL\DBALRepositoryFactory:
-    public: true
+  user_event_store_repository:
+    class: Core\Repository\EventStoreRepository
     arguments:
-      - '@doctrine.dbal.default_connection'
-      - '@broadway.serializer.readmodel'
+      - '@broadway.event_store'
+      - '@broadway.event_handling.event_bus'
+      - 'Security\Domain\AggregateRoot\User'
