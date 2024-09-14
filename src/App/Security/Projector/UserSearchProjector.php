@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\App\Security\Projector;
+namespace App\Security\Projector;
 
-use App\App\Security\ReadModel\User as ReadModel;
+use App\Security\ReadModel\User as ReadModel;
 use Broadway\ReadModel\Projector;
 use Security\Domain\Event\UserHasBeenCreated;
 use Security\Infrastructure\Repository\UserRepository;

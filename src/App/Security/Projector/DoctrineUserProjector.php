@@ -21,13 +21,7 @@ class DoctrineUserProjector extends Projector
 
     protected function applyUserHasBeenCreated(UserHasBeenCreated $event): void
     {
-        $user = new User(
-            (string) $event->getUserId(),
-            (string) $event->getUsername(),
-            (string) $event->getEmail(),
-            null,
-            $event->getRoles()->toArray()
-        );
+        $user = User::fromArray($event->serialize());
 
         $user->setPassword(
             $this->passwordHasher->hashPassword($user, (string) $event->getPassword())

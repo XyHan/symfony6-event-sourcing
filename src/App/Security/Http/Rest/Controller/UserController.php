@@ -9,11 +9,6 @@ use App\Security\Http\Rest\ViewModel\UserView;
 use App\Shared\Adapter\CommandBus;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use Security\Application\Command\CreateAUser\CreateAUserCommand;
-use Security\Domain\Model\Email;
-use Security\Domain\Model\Name;
-use Security\Domain\Model\Password;
-use Security\Domain\Model\Role\Roles;
-use Security\Domain\Model\Uuid as DomainUuid;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,11 +37,11 @@ readonly class UserController
         }
 
         $command = new CreateAUserCommand(
-            DomainUuid::fromString((new Version4Generator())->generate()),
-            Name::fromString($registerUserDto->getUsername()),
-            Email::fromString($registerUserDto->getEmail()),
-            Password::fromString($registerUserDto->getPassword()),
-            Roles::fromArray($registerUserDto->getRoles())
+            (new Version4Generator())->generate(),
+            $registerUserDto->getUsername(),
+            $registerUserDto->getEmail(),
+            $registerUserDto->getPassword(),
+            $registerUserDto->getRoles()
         );
         $this->commandBus->dispatch($command);
 

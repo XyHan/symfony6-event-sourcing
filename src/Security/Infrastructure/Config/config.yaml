@@ -6,16 +6,9 @@ services:
   Security\:
     resource: '%kernel.project_dir%/src/Security/*'
 
-  Security\Domain\Repository\UserBroadwayRepository:
-    arguments:
-      - '@broadway.event_store'
-      - '@broadway.event_handling.event_bus'
-      -
-        - '@broadway.metadata_enriching_event_stream_decorator'
-
   Security\Application\Command\CreateAUser\CreateAUserCommandHandler:
     arguments:
-      - '@Security\Domain\Repository\UserBroadwayRepository'
+      $repository: '@Core\Repository\EventStoreRepository'
     tags:
       - { name: broadway.command_handler }
 

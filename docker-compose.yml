@@ -19,7 +19,7 @@ services:
     build: "docker/php"
     container_name: "s6es-php"
     hostname: "s6es-php"
-    working_dir: "/var/www"
+    working_dir: "/srv"
     restart: "always"
 
     depends_on:
@@ -28,7 +28,7 @@ services:
       - "8181:80"
     volumes:
       - "./docker/php/vhosts:/etc/apache2/sites-enabled"
-      - "${LOCAL_PATH}:/var/www"
+      - "./:/srv:rw,cached"
       - "~/.composer:/home/www-data/.composer"
     networks:
       - "default"

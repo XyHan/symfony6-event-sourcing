@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Security\Infrastructure\Repository\DBAL;
+namespace Core\Repository\ReadModelRepository;
 
 use Assert\Assertion;
 use Assert\AssertionFailedException;
@@ -15,7 +15,7 @@ use Doctrine\DBAL\Schema\Schema;
 use Doctrine\DBAL\Schema\SchemaException;
 use Doctrine\DBAL\Schema\Table;
 
-readonly class DBALRepository implements Repository
+readonly class DBALReadModelRepository implements Repository
 {
     public function __construct(
         private Connection $connection,

@@ -21,7 +21,12 @@ class Roles
 
     public static function fromArray(array $roles): self
     {
-        return new self($roles);
+        return new self(
+            array_map(
+                static fn (Role|string $role) => $role instanceof Role ? $role : Role::fromString($role),
+                $roles
+            )
+        );
     }
 
     public function toArray(): array

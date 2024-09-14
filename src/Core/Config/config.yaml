@@ -1,0 +1,18 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Core\:
+    resource: '%kernel.project_dir%/src/Core/*'
+
+  Core\Repository\ReadModelRepository\DBALReadModelRepositoryFactory:
+    arguments:
+      $serializer: '@broadway.simple_interface_serializer'
+
+  Core\Repository\EventStoreRepository:
+    arguments:
+      - '@broadway.event_store'
+      - '@broadway.event_handling.event_bus'
+      -
+        - '@broadway.metadata_enriching_event_stream_decorator'

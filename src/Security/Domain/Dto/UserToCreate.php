@@ -8,14 +8,14 @@ use Security\Domain\ValueObject\Password;
 use Security\Domain\ValueObject\Role\Roles;
 use Security\Domain\ValueObject\Uuid;
 
-class UserToCreate
+readonly class UserToCreate
 {
     public function __construct(
-        protected Uuid $uuid,
-        protected Name $username,
-        protected Email $email,
-        protected Roles $roles,
-        protected Password $password
+        private Uuid $uuid,
+        private Name $username,
+        private Email $email,
+        private Roles $roles,
+        private Password $password
     ) {
     }
 

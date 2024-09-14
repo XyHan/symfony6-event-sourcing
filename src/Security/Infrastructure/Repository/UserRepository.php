@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace Security\Infrastructure\Repository;
 
-use App\App\Security\ReadModel\User;
+use App\Security\ReadModel\User;
 use Broadway\ReadModel\Repository;
 use Security\Domain\Model\User\UserInterface;
 use Security\Domain\Repository\UserRepositoryInterface;
-use Security\Infrastructure\Repository\DBAL\DBALRepositoryFactory;
+use Core\Repository\ReadModelRepository\DBALReadModelRepositoryFactory;
 use Webmozart\Assert\Assert;
 
 class UserRepository implements UserRepositoryInterface
 {
     private Repository $repository;
 
-    public function __construct(DBALRepositoryFactory $DBALRepositoryFactory)
+    public function __construct(DBALReadModelRepositoryFactory $DBALRepositoryFactory)
     {
         $this->repository = $DBALRepositoryFactory->create('rm_user', User::class);
     }

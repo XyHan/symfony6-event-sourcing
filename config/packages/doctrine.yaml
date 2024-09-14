@@ -1,7 +1,11 @@
 doctrine:
     dbal:
-        url: '%env(resolve:DATABASE_URL)%'
-
+        default_connection: default
+        connections:
+            default:
+                url: '%env(DATABASE_URL)%'
+                charset: 'UTF8'
+                server_version: '8.0.22'
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true

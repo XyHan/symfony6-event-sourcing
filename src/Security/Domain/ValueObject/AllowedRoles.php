@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Security\Domain\ValueObject;
 
-use Security\Domain\Model\Role\Role;
+use Security\Domain\ValueObject\Role\Role;
 
 class AllowedRoles
 {

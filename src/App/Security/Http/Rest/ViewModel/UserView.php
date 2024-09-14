@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Security\Http\Rest\ViewModel;
 
 use Security\Application\Command\CreateAUser\CreateAUserCommand;
-use Security\Domain\Model\Name;
-use Security\Domain\Model\Uuid;
+use Security\Domain\ValueObject\Name;
+use Security\Domain\ValueObject\Uuid;
 
 readonly class UserView
 {

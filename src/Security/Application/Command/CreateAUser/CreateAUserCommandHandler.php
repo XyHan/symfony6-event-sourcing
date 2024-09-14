@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace Security\Application\Command\CreateAUser;
 
+use Security\Domain\Repository\EventStoreRepositoryInterface;
 use Broadway\CommandHandling\SimpleCommandHandler;
 use Security\Domain\AggregateRoot\User;
 use Security\Domain\Dto\UserToCreate;
-use Security\Domain\Repository\UserBroadwayRepository;
 
 class CreateAUserCommandHandler extends SimpleCommandHandler
 {
-    public function __construct(
-        private readonly UserBroadwayRepository $repository
-    ) {}
+    public function __construct(private readonly EventStoreRepositoryInterface $repository) {}
 
     public function handleCreateAUserCommand(CreateAUserCommand $command): void
     {

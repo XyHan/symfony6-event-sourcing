@@ -2,15 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Security\Domain\Repository;
+namespace Core\Repository;
 
+use Security\Domain\Repository\EventStoreRepositoryInterface;
 use Broadway\EventHandling\EventBus;
 use Broadway\EventSourcing\AggregateFactory\PublicConstructorAggregateFactory;
 use Broadway\EventSourcing\EventSourcingRepository;
 use Broadway\EventStore\EventStore;
 use Security\Domain\AggregateRoot\User;
 
-class UserBroadwayRepository extends EventSourcingRepository
+class EventStoreRepository extends EventSourcingRepository implements EventStoreRepositoryInterface
 {
     public function __construct(
         EventStore $eventStore,

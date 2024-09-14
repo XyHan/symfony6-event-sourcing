@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\App\Security\ReadModel;
+namespace App\Security\ReadModel;
 
 use Broadway\ReadModel\SerializableReadModel;
 use Security\Domain\Identifier\UserIdentifier;

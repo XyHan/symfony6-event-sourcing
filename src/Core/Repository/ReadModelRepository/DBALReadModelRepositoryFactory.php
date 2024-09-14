@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Security\Infrastructure\Repository\DBAL;
+namespace Core\Repository\ReadModelRepository;
 
 use Broadway\ReadModel\Repository;
 use Broadway\ReadModel\RepositoryFactory;
 use Broadway\Serializer\Serializer;
 use Doctrine\DBAL\Connection;
 
-readonly class DBALRepositoryFactory implements RepositoryFactory
+readonly class DBALReadModelRepositoryFactory implements RepositoryFactory
 {
     public function __construct(
         private Connection $connection,
@@ -18,6 +18,6 @@ readonly class DBALRepositoryFactory implements RepositoryFactory
 
     public function create(string $name, string $class): Repository
     {
-        return new DBALRepository($this->connection, $this->serializer, $name, $class);
+        return new DBALReadModelRepository($this->connection, $this->serializer, $name, $class);
     }
 }

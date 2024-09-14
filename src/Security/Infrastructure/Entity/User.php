@@ -64,6 +64,11 @@ final class User implements UserInterface, PasswordAuthenticatedUserInterface, D
         $this->roles = $roles;
     }
 
+    public static function fromArray(array $data): self
+    {
+        return new self($data['userId'], $data['username'], $data['email'], $data['password'], $data['roles']);
+    }
+
     public function getId(): ?int
     {
         return $this->id;
