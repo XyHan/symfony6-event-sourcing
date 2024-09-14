@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Security\Infrastructure\Repository;
 
-use Security\Domain\Model\User\User;
+use App\App\Security\ReadModel\User;
+use Broadway\ReadModel\Repository;
 use Security\Domain\Model\User\UserInterface;
 use Security\Domain\Repository\UserRepositoryInterface;
 use Security\Infrastructure\Repository\DBAL\DBALRepositoryFactory;
-use Broadway\ReadModel\Repository;
 use Webmozart\Assert\Assert;
 
 class UserRepository implements UserRepositoryInterface
