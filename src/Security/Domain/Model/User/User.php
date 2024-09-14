@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Security\Domain\Model\User;
 
 use Security\Domain\Identifier\UserIdentifier;
-use Security\Domain\Model\Email;
-use Security\Domain\Model\Name;
-use Security\Domain\Model\Role\Roles;
+use Security\Domain\ValueObject\Email;
+use Security\Domain\ValueObject\Name;
+use Security\Domain\ValueObject\Role\Roles;
 
 readonly class User implements UserInterface
 {

@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Security\Domain\Event;
 
 use Security\Domain\Identifier\UserIdentifier;
-use Security\Domain\Model\Email;
-use Security\Domain\Model\Name;
-use Security\Domain\Model\Password;
-use Security\Domain\Model\Role\Roles;
+use Security\Domain\ValueObject\Email;
+use Security\Domain\ValueObject\Name;
+use Security\Domain\ValueObject\Password;
+use Security\Domain\ValueObject\Role\Roles;
 
 readonly class UserHasBeenCreated extends UserEvent
 {

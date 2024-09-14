@@ -8,10 +8,10 @@ use Broadway\EventSourcing\EventSourcedAggregateRoot;
 use Security\Domain\Dto\UserToCreate;
 use Security\Domain\Event\UserHasBeenCreated;
 use Security\Domain\Identifier\UserIdentifier;
-use Security\Domain\Model\Email;
-use Security\Domain\Model\Name;
-use Security\Domain\Model\Password;
-use Security\Domain\Model\Role\Roles;
+use Security\Domain\ValueObject\Email;
+use Security\Domain\ValueObject\Name;
+use Security\Domain\ValueObject\Password;
+use Security\Domain\ValueObject\Role\Roles;
 
 class User extends EventSourcedAggregateRoot
 {

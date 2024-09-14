@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Security\Application\Command\CreateAUser;
 
-use Security\Domain\Model\Email;
-use Security\Domain\Model\Name;
-use Security\Domain\Model\Password;
-use Security\Domain\Model\Role\Roles;
-use Security\Domain\Model\Uuid;
+use Security\Domain\ValueObject\Email;
+use Security\Domain\ValueObject\Name;
+use Security\Domain\ValueObject\Password;
+use Security\Domain\ValueObject\Role\Roles;
+use Security\Domain\ValueObject\Uuid;
 
 readonly class CreateAUserCommand
 {
